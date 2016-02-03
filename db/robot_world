@@ -1,0 +1,27 @@
+---
+robots:
+- name: robotnik
+  city: sonicworld
+  avatar: '928734'
+  birthdate: '2013-12-31'
+  date hired: '2010-09-23'
+  department: benders
+- name: robotnik
+  city: sonicworld
+  avatar: ''
+  birthdate: ''
+  date hired: ''
+  department: ''
+- name: frank
+  city: ''
+  avatar: ''
+  birthdate: ''
+  date hired: ''
+  department: ''
+- name: scott
+  city: denver
+  avatar: '9028340983204'
+  birthdate: '2016-12-31'
+  date hired: '2014-12-31'
+  department: poop
+total: 4

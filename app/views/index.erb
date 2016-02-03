@@ -1,0 +1,34 @@
+<div class="page-header">
+  <div class="navbar">
+
+  </div>
+</div>
+
+<div class="table-responsive">
+  <table class="table">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>City</th>
+        <th>Avatar</th>
+        <th>Birthdate</th>
+        <th>Hire Date</th>
+        <th>Department</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @robots.each do |robot| %>
+      <tr>
+        <th scope="row">
+          <a href="/robots/<%= robot.name %>"><%= robot.name  %></a>
+        </th>
+        <td><%= robot.city %></td>
+        <td><img class="avatar" src='https://robohash.org/<%= robot.avatar %>'></td>
+        <td><%= robot.birthdate %></td>
+        <td><%= robot.date_hired %></td>
+        <td><%= robot.department %></td>
+      </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>
