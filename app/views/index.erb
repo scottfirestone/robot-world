@@ -1,8 +1,15 @@
-<div class="page-header">
-  <div class="navbar">
-
+<nav class="navbar navbar-default navbar-fixed-top">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <a class="navbar-brand" href="/">Robot World</a>
+    </div>
+    <ul class="nav navbar-nav pull-right">
+      <li><a href="/robots/new">New Robot</a></li>
+      <li><a href="/robots">Robot Directory</a></li>
+      <li><a href="/">Dashboard</a></li>
+    </ul>
   </div>
-</div>
+</nav>
 
 <div class="table-responsive">
   <table class="table">
@@ -27,6 +34,10 @@
         <td><%= robot.birthdate %></td>
         <td><%= robot.date_hired %></td>
         <td><%= robot.department %></td>
+        <td><a href="/robots/<%= robot.name %>/edit">Edit</td>
+        <td><form action="/robots/<%= robot.name %>" method="POST">
+        <input type="hidden" name="_method" value="DELETE">      <input type="submit" value="Delete">
+      </form></td>
       </tr>
       <% end %>
     </tbody>

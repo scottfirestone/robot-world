@@ -32,6 +32,26 @@ class RobotWorldApp < Sinatra::Base
     erb :show
   end
 
+  get '/robots/:name/edit' do |name|
+    @robot = robot_world.find(name)
+    erb :edit
+  end
+
+  post "/robots/:name" do |name|
+    @robot = robot_world.update(params[:robot], name)
+    redirect "/robots"
+  end
+
+  put '/robots/:name' do |name|
+    robot_world.update(name, params[:robot])
+    redirect "/robots"
+  end
+
+  delete '/robots/:name' do |name|
+    robot_world.delete(name)
+    redirect "/robots"
+  end
+
   not_found do
     erb :error
   end

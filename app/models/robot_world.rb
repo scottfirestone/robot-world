@@ -17,7 +17,7 @@ class RobotWorld
                               'city'       => robot[:city],
                               'avatar'     => robot[:avatar],
                               'birthdate'  => robot[:birthdate],
-                              'date hired' => robot[:date_hired],
+                              'date_hired' => robot[:date_hired],
                               'department' => robot[:department]}
     end
   end
@@ -38,5 +38,22 @@ class RobotWorld
 
   def find(name)
     Robot.new(raw_robot(name))
+  end
+
+  def update(name, robot)
+    database.transaction do
+      target = database['robots'].find { |data| data["name"] == name }
+      target["city"] = robot[:city]
+      target["avatar"] = robot[:avatar]
+      target["birthdate"] = robot[:birthdate]
+      target["date_hired"] = robot[:date_hired]
+      target["department"] = robot[:department]
+    end
+  end
+
+  def delete(name)
+    database.transaction do
+      database["robots"].delete_if { |robot| robot["name"] == name }
+    end
   end
 end
