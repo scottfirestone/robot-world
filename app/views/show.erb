@@ -13,15 +13,16 @@
 
   </div>
 </div>
-<div class="container">
+<div class="row">
+<div class="container col-md-offset-1 col-md-6">
   <div class="row">
     <div class="well">
       <div class="row">
         <h1 class ="col-md-offset-2"><%= @robot.name %></h1>
       </div>
       <div class="row">
-        <div class="col-md-3">
-          <table class="col-md-offset-2 table table-nonfluid" style="width: auto;">
+        <div class="col-md-offset-1 col-md-3">
+          <table class="col-md-offset-2 table table-nonfluid center-block" style="width: auto;">
             <tbody>
               <tr>
                 <th scope="row">City:</th>
@@ -45,10 +46,11 @@
             </tbody>
           </table>
         </div>
-        <div class="col-md-3">
-          <img class='profile-pic' src='https://robohash.org/<%= "#{@robot.avatar}" %>'>
+        <div class="col-md-offset-3 col-md-3">
+          <img class='profile-pic .img-responsive' src='https://robohash.org/<%= "#{@robot.avatar}" %>'>
         </div>
       </div>
     </div>
   </div>
+</div>
 </div>

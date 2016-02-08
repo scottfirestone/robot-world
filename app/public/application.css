@@ -7,8 +7,9 @@
   height: auto;
 }
 .profile-pic {
-  width: 150px;
+  width: 250px;
   height: auto;
+  margin: 0 auto;
 }
 #randorobo{
   width: 300px;

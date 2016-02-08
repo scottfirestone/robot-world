@@ -11,8 +11,8 @@
   </div>
 </nav>
 
-<div class="col-md-3">
-  <form class="form-horizontal" role="form" action="/robots" method="post">
+<form class="form-horizontal" role="form" action="/robots" method="post">
+  <div class="col-md-3">
     <label for="name">Name</label>
     <input type="text" name="robot[name]" class="form-control" id="name" placeholder="Enter Name">
     <small class="text-muted">We'll never share or sell your robot info to any third parties.</small><br><br>
@@ -22,12 +22,10 @@
 
     <label for="avatar">Avatar</label>
     <input type="text" name="robot[avatar]" class="form-control" id="avatar" placeholder="Enter Avatar Character-Code">
-    <small class="text-muted">Visit <a href="https://robohash.org".>robohash</a> and add your character-code to the path to preview your robot!</small><br><br>
-  </form>
-</div>
+    <small class="text-muted">Visit <a href="https://robohash.org" data-remote="false".>robohash</a> and add your character-code to the path to preview your robot!</small><br><br>
+  </div>
 
-<div class="col-md-offset-1 col-md-3">
-  <form class="form-horizontal" role="form" action="/robots" method="post">
+  <div class="col-md-offset-1 col-md-3">
     <label for="birthdate">Birthdate</label>
     <input type="date" name="robot[birthdate]" class="form-control" id="birthdate" placeholder="Enter Birthdate"><br><br><br>
 
@@ -38,10 +36,11 @@
     <input type="text" name="robot[department]" class="form-control" id="department" placeholder="Enter Department"><br><br>
 
     <button type="submit" class="btn btn-primary btn-block">Submit</button>
-  </form>
-</div>
+  </div>
+</form>
+
 
 <div class="col-md-offset-1 col-md-4">
   <img id="randorobo" src="https://robohash.org/<%= (0...50).map { ('a'..'z').to_a[rand(26)] }.join %>" alt="randorobo"/>
-  <p style="text-align: center; padding-top: 4px;"><small class="text-muted">Note: This is a picture of a random robot. YMMV.</small></p>
+  <p style="text-align: center; padding-top: 4px;"><small class="text-muted">Note: This is a picture of a random robot.</small></p>
 </div>

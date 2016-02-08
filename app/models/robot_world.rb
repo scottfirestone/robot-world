@@ -1,6 +1,3 @@
-require 'yaml/store'
-require_relative 'robot'
-
 class RobotWorld
   attr_reader :database
 
@@ -9,51 +6,37 @@ class RobotWorld
   end
 
   def create(robot)
-    database.transaction do
-      database['robots']  ||= []
-      database['total']   ||= 0
-      database['total']   += 1
-      database['robots']  << {"name"       => robot[:name],
-                              'city'       => robot[:city],
-                              'avatar'     => robot[:avatar],
-                              'birthdate'  => robot[:birthdate],
-                              'date_hired' => robot[:date_hired],
-                              'department' => robot[:department]}
-    end
-  end
-
-  def raw_robots
-    database.transaction do
-      database['robots'] || []
-    end
+    dataset.insert(robot)
   end
 
   def all
-    raw_robots.map { |data| Robot.new(data)}
+    dataset.to_a.map { |data| Robot.new(data) }
   end
 
-  def raw_robot(name)
-    raw_robots.find { |robot| robot["name"] == name}
+  def dataset
+    database.from(:robots)
   end
 
-  def find(name)
-    Robot.new(raw_robot(name))
+  def find(id)
+    Robot.new(dataset.where(:id=>id).to_a.first)
   end
 
-  def update(name, robot)
-    database.transaction do
-      target = database['robots'].find { |data| data["name"] == name }
-      target["city"] = robot[:city]
-      target["avatar"] = robot[:avatar]
-      target["birthdate"] = robot[:birthdate]
-      target["date_hired"] = robot[:date_hired]
-      target["department"] = robot[:department]
-    end
+  def update(id, params)
+    dataset.where(:id=>id).update(
+      :name       => params[:name],
+      :city       => params[:city],
+      :avatar     => params[:avatar],
+      :birthdate  => params[:birthdate],
+      :date_hired => params[:date_hired],
+      :department => params[:department]
+    )
   end
 
-  def delete(name)
-    database.transaction do
-      database["robots"].delete_if { |robot| robot["name"] == name }
-    end
+  def delete(id)
+    dataset.where(:id => id).delete
+  end
+
+  def delete_all
+    dataset.map { |robot| delete(robot.id) }
   end
 end
