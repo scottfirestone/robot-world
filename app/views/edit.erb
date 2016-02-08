@@ -11,7 +11,7 @@
   </div>
 </nav>
 
-<form class="form-horizontal" action='/robots/<%= @robot.name %>' method="POST">
+<form class="form-horizontal" action='/robots/<%= @robot.id %>' method="POST">
   <div class="col-md-3">
     <input type="hidden" name="_method" value="PUT"/>
     <label for="name">Name</label>
@@ -24,6 +24,7 @@
     <label for="avatar">Avatar</label>
     <input type="text" name="robot[avatar]" class="form-control" id="avatar" placeholder="Enter Avatar Character-Code" value='<%= @robot.avatar %>'>
     <small class="text-muted">Visit <a href="https://robohash.org".>robohash</a> and add your character-code to the path to preview your robot!</small><br><br>
+    <a class="btn btn-warning btn-block" href="/robots/<%= @robot.id %>" role="button">Cancel</a>
   </div>
 
   <div class="col-md-offset-1 col-md-3">
@@ -34,7 +35,7 @@
     <input type="date" name="robot[date_hired]" class="form-control" id="date_hired" placeholder="Enter Hire Date" value='<%= @robot.date_hired %>'><br>
 
     <label for="department">Department</label>
-    <input type="text" name="robot[department]" class="form-control" id="department" placeholder="Enter Department" value='<%= @robot.department %>'><br><br>
+    <input type="text" name="robot[department]" class="form-control" id="department" placeholder="Enter Department" value='<%= @robot.department %>'><br><br><br>
 
     <button type="submit" class="btn btn-primary btn-block">Submit</button>
   </div>

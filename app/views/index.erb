@@ -27,15 +27,15 @@
       <% @robots.each do |robot| %>
       <tr>
         <th scope="row">
-          <a href="/robots/<%= robot.name %>"><%= robot.name  %></a>
+          <a href="/robots/<%= robot.id %>"><%= robot.name  %></a>
         </th>
         <td><%= robot.city %></td>
         <td><img class="avatar" src='https://robohash.org/<%= robot.avatar %>'></td>
         <td><%= robot.birthdate %></td>
         <td><%= robot.date_hired %></td>
         <td><%= robot.department %></td>
-        <td><a href="/robots/<%= robot.name %>/edit">Edit</td>
-        <td><form action="/robots/<%= robot.name %>" method="POST">
+        <td><a href="/robots/<%= robot.id %>/edit">Edit</td>
+        <td><form action="/robots/<%= robot.id %>" method="POST">
         <input type="hidden" name="_method" value="DELETE">      <input type="submit" value="Delete">
       </form></td>
       </tr>

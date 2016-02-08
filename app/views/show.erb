@@ -45,6 +45,19 @@
               </tr>
             </tbody>
           </table>
+ <div class="row">
+   <div class="col-md-2">
+
+          <a class="btn btn-primary" href="/robots/<%= @robot.id %>/edit" role="button">Edit</a>
+          <form action="/robots/<%= @robot.id %>" method="POST">
+
+          </div>
+          <div class="col-md-offset-2 col-md-4">
+
+          </div>
+          <input type="hidden" name="_method" value="DELETE">      <input type="submit" value="Delete">
+        </div>
+
         </div>
         <div class="col-md-offset-3 col-md-3">
           <img class='profile-pic .img-responsive' src='https://robohash.org/<%= "#{@robot.avatar}" %>'>
@@ -52,5 +65,4 @@
       </div>
     </div>
   </div>
-</div>
 </div>

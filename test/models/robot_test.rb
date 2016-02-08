@@ -1,20 +1,26 @@
 require_relative "../test_helper"
 
-class RobotWorldTest < Minitest::Test
+class RobotTest < Minitest::Test
   include TestHelpers
 
-  def create_robots(num)
-    num.times do |i|
-      robot_world.create(
-        name: "name#{i+1}",
-        city: "city#{i+1}",
-        avatar: "avatar#{i+1}",
-        birthdate: "2015-09-0#{i+1}",
-        date_hired: "2016-09-0#{i+1}",
-        department: "department#{i+1}"
-      )
-    end
-  end
+  def test_robot_attributes_assigned_correctly
+    data = {
+    name: "name1",
+    city: "city1",
+    avatar: "avatar1",
+    birthdate: "2015-09-01",
+    date_hired: "2016-09-01",
+    department: "department1"
+  }
+
+  robot = Robot.new(data)
+
+  assert_equal "name1", robot.name
+  assert_equal "city1", robot.city
+  assert_equal "avatar1", robot.avatar
+  assert_equal Date.parse("2015-09-01"), robot.birthdate
+  assert_equal Date.parse("2016-09-01"), robot.date_hired
+  assert_equal "department1", robot.department
 
   def test_can_create_a_robot
     robot_world.create(
@@ -26,7 +32,7 @@ class RobotWorldTest < Minitest::Test
         department: "department1"
       )
     robot = robot_world.all.last
-    assert robot.name
+    assert robot.id
     assert_equal "name1", robot.name
     assert_equal "city1", robot.city
     assert_equal "avatar1", robot.avatar
@@ -100,26 +106,5 @@ class RobotWorldTest < Minitest::Test
     final_count = robot_world.all.count
 
     assert_equal 1, (initial_count - final_count)
-  end
-
-  def test_it_has_average_robot_age
-    robot_world.create(
-        name: "name1",
-        city: "city1",
-        avatar: "avatar1",
-        birthdate: "2005-09-01",
-        date_hired: "2016-09-01",
-        department: "department1"
-    )
-    robot_world.create(
-        name: "name1",
-        city: "city1",
-        avatar: "avatar1",
-        birthdate: "2015-09-01",
-        date_hired: "2016-09-01",
-        department: "department1"
-    )
-
-    assert_equal 6, robot_world.average_age
   end
 end

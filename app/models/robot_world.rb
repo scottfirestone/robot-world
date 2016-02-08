@@ -39,4 +39,10 @@ class RobotWorld
   def delete_all
     dataset.map { |robot| delete(robot.id) }
   end
+
+  def average_age
+    birthdates = all.map { |robot| robot.birthdate}
+    avg_birthdate = birthdates.reduce(0) { |total, birthdate| total + BigDecimal.new(birthdate.to_s) } / birthdates.size
+    BigDecimal.new(Time.now.to_s) - avg_birthdate
+  end
 end
